@@ -1,0 +1,32 @@
+mongo-url = "mongodb://xxxxxx:yyyyyy@172.23.90.75:27017,172.23.90.76:27017,172.23.90.85:27017/?authSource=admin&authMechanism=SCRAM-SHA-256&replicaSet=rs01&connectTimeoutMS=10000&readPreference=primaryPreferred&serverSelectionTimeoutMS=5000&appname=MongoDB%20Compass&ssl=false"
+elasticsearch-urls = ["http://172.23.90.134:9200"]
+elasticsearch-user = "elastic"
+elasticsearch-password = "xxxxxxxxxxxxxxxxxxxx"
+change-stream-namespaces = ['']
+# direct-read-namespaces = ['']
+direct-read-namespaces = [""]
+direct-read-dynamic-include-regex ="^tnt_.*\\.obj_.*$"
+gzip = true
+stats = false
+index-stats = false
+elasticsearch-max-conns = 10
+dropped-collections = true
+dropped-databases = true
+# do not start processing at the beginning of the MongoDB oplog
+# if you set the replay to true you may see version conflict messages
+# in the log if you had synced previously. This just means that you are replaying old docs which are already
+# in Elasticsearch with a newer version. Elasticsearch is preventing the old docs from overwriting new ones.
+replay = false
+# resume processing from a timestamp saved in a previous run
+resume = true
+# do not validate that progress timestamps have been saved
+resume-write-unsafe = false
+# override the name under which resume state is saved
+resume-name = "default"
+# use a custom resume strategy (tokens) instead of the default strategy (timestamps)
+# tokens work with MongoDB API 3.6+ while timestamps work only with MongoDB API 4.0+
+resume-strategy = 1
+verbose = false
+# do not exit after full-sync, rather continue tailing the oplog
+exit-after-direct-reads = false
+# [[mapping]]

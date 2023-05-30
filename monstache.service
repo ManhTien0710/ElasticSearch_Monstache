@@ -1,0 +1,12 @@
+[Unit]
+Description=Monstache service for MongoDB->Elasticsearch replication
+After=multi-user.target elasticsearch.service
+
+[Service]
+User=root
+Restart=always
+RestartSec=10
+ExecStart=/monstache/build/linux-amd64/monstache -f /monstache/config.toml
+
+[Install]
+WantedBy=multi-user.target
